@@ -2,7 +2,7 @@ class LineItemsController < ApplicationController
   include CurrentCart
   include SessionCounter
 
-  before_action :set_cart, only: [:create]
+  before_action :set_cart, only: [:create, :destroy]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -61,9 +61,13 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
-    @line_item.destroy
+    @line_item = @cart.remove_product(@line_item.product_id)
+    @line_item.save
+    @line_item.destroy if @line_item.quantity == 0
+
     respond_to do |format|
-      format.html { redirect_to line_items_url }
+      format.js { @line_item }
+      format.html { redirect_to store_url }
       format.json { head :no_content }
     end
   end
