@@ -1,3 +1,4 @@
-$(document).on "ready page:change", ->
-  $('.store .entry > img').click ->
+$(document).on "ready", ->
+  $('.store .entry > img').click (e) ->
+    e.preventDefault()
     $(this).parent().find(':submit').click()
