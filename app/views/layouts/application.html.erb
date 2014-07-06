@@ -14,9 +14,9 @@
   <div id="columns">
     <div id="side">
       <div class="time">Date: <%= Time.new.strftime("%B %d %Y") %></div>
-      <div id="cart">
+      <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
         <%= render @cart %>
-      </div>
+      <% end %>
       <ul>
         <li><a href="http://www....">Home</a><li>
         <li><a href="http://www..../faq">Questions</a><li>
