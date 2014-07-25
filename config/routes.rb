@@ -10,7 +10,9 @@ Depot::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   get "store/index"
-  resources :products
+  resources :products do
+    get :who_bought, on: :member
+  end
 
   root 'store#index', as: 'store'
 
