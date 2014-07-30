@@ -1,6 +1,9 @@
 class OrderNotifier < ActionMailer::Base
-  default from: "jeff.li029@gmail.com"
+  default from: "admin@rubydepot.com"
 
+  def protect_against_forgery?
+    false
+  end
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -17,9 +20,9 @@ class OrderNotifier < ActionMailer::Base
   #
   #   en.order_notifier.shipped.subject
   #
-  def shipped
+  def shipped(order)
     @order = order
 
-    mail to: order.email, subject: "Pragmatic Store Order Confirmation"
+    mail to: order.email, subject: "Pragmatic Store Order Shipped"
   end
 end
