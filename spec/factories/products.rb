@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :product do
-    title "MyString"
-    descript "MyText"
-    image_url "MyString"
+    title "Coffeescript"
+    description "Lorem Ipsum"
+    image_url "images/cs.jpg"
     price "9.99"
   end
 end

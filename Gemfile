@@ -50,6 +50,7 @@ group :test, :development do
   gem 'capybara-webkit'
   gem 'email_spec'
   gem 'hirb'
+  gem 'database_cleaner'
 end
 
 # Use ActiveModel has_secure_password
